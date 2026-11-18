@@ -2434,13 +2434,17 @@
 }
 
 /* ==========================================================================
-   RESPONSIVE REFINEMENTS (Tablet 768px, Mobile 390px & 360px)
+   RESPONSIVE REFINEMENTS (Tablet 1024px/768px, Mobile 390px & 360px)
    ========================================================================== */
 
 @media (max-width: 1024px) {
   .reveal-layout {
     grid-template-columns: 1fr;
     text-align: center;
+  }
+
+  .reveal-portrait-wrap {
+    max-width: 360px;
   }
 
   .reveal-copy {
@@ -2472,66 +2476,332 @@
 }
 
 @media (max-width: 768px) {
+  :root {
+    --section-pad-y: clamp(3.2rem, 7vh, 5.5rem);
+    --section-pad-x: 1rem;
+  }
+
   .chapter-rail {
     display: none;
   }
 
   .floating-topbar {
-    top: 0.75rem;
-    left: 0.75rem;
-    right: 0.75rem;
+    top: 0.55rem;
+    left: 0.65rem;
+    right: 0.65rem;
+    gap: 0.4rem;
+  }
+
+  .brand-pill {
+    padding: 0.42rem 0.75rem;
+    font-size: 0.88rem;
   }
 
   .brand-pill span:last-child {
     display: none;
   }
 
-  .music-meta {
-    max-width: 96px;
+  .music-widget {
+    padding: 0.35rem 0.55rem 0.35rem 0.42rem;
+    gap: 0.4rem;
   }
 
+  .music-meta {
+    display: none;
+  }
+
+  #fullscreen-btn {
+    display: none;
+  }
+
+  .volume-popover {
+    right: 0;
+    max-width: calc(100vw - 1.5rem);
+  }
+
+  .scene-countdown,
+  .scene-reveal,
+  .scene-cake,
+  .scene-finale {
+    padding-top: 5rem;
+  }
+
+  .icon-pill-btn {
+    width: 34px;
+    height: 34px;
+  }
+
+  /* Scene 01 Envelope */
+  .envelope-stage {
+    width: min(320px, 86vw);
+    margin-bottom: 1.8rem;
+  }
+
+  .envelope-recipient {
+    font-size: clamp(1.45rem, 5.5vw, 1.85rem);
+    margin-bottom: 1.5rem;
+  }
+
+  /* Scene 02 Countdown */
   .countdown-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    max-width: 360px;
+    max-width: 320px;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .countdown-unit {
+    padding: 1rem 0.5rem;
+  }
+
+  .countdown-value {
+    font-size: 2.2rem;
+  }
+
+  .celebration-state {
+    padding: 1.35rem 1rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .celebration-headline {
+    font-size: clamp(1.75rem, 6.5vw, 2.4rem);
+  }
+
+  .celebration-sub {
+    font-size: 1.35rem;
+  }
+
+  /* Scene 03 First Reveal */
+  .reveal-portrait-wrap {
+    max-width: min(290px, 78vw);
+  }
+
+  .reveal-portrait-frame {
+    border-radius: 200px 200px 14px 14px;
+    padding: 8px;
+  }
+
+  .reveal-portrait-inner {
+    border-radius: 192px 192px 10px 10px;
+  }
+
+  .reveal-chapter-seal {
+    width: 68px;
+    height: 68px;
+    right: 4px;
+    bottom: 12px;
+  }
+
+  .reveal-chapter-seal strong {
+    font-size: 1.35rem;
+  }
+
+  .reveal-line-primary {
+    font-size: 1.85rem;
+  }
+
+  .reveal-name {
+    font-size: 1.85rem;
+  }
+
+  /* Scene 04 Gallery */
+  .gallery-block {
+    margin-bottom: 3.5rem;
+  }
+
+  .gallery-block-label {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
   }
 
   .gallery-cinematic-card {
     aspect-ratio: 4 / 3;
+    max-height: 55vh;
+  }
+
+  .gallery-cinematic-overlay {
+    padding: 1.15rem;
+  }
+
+  .polaroid-grid {
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+    gap: 0.95rem;
+  }
+
+  .polaroid-item {
+    padding: 8px 8px 22px;
+  }
+
+  .polaroid-caption {
+    font-size: 0.88rem;
+    margin-top: 0.65rem;
+  }
+
+  .editorial-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .editorial-card,
   .editorial-card.span-wide,
   .editorial-card.span-tall {
-    grid-column: span 12;
+    grid-column: span 1;
     aspect-ratio: 4 / 5;
   }
 
-  .editorial-card.span-wide {
-    aspect-ratio: 4 / 3;
+  .scrapbook-stage {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1.15rem;
   }
 
-  .scrapbook-stage {
-    padding: 1.15rem;
-    gap: 0.9rem;
+  .scrapbook-piece {
+    width: 100%;
+    transform: none !important;
+  }
+
+  .interactive-cards-grid,
+  .video-memory-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+
+  .photo-interactive-overlay {
+    padding: 0.85rem;
+  }
+
+  .photo-interactive-caption,
+  .video-memory-cap {
+    font-size: 0.86rem;
+  }
+
+  .filmstrip-slide {
+    flex: 0 0 240px;
+  }
+
+  /* Scene 05 Reasons */
+  .reasons-grid {
+    grid-template-columns: 1fr;
+    gap: 0.95rem;
+  }
+
+  .reason-card {
+    min-height: 205px;
+  }
+
+  .reason-card-inner {
+    min-height: 205px;
+  }
+
+  .reason-face {
+    padding: 1.25rem 1.1rem;
+  }
+
+  .reason-text {
+    font-size: 1.05rem;
+    line-height: 1.45;
+  }
+
+  /* Scene 06 Letter */
+  .letter-paper {
+    padding: 1.8rem 1.15rem;
+  }
+
+  .letter-paper::before {
+    inset: 7px;
+  }
+
+  .letter-top-meta {
+    font-size: 0.68rem;
+    flex-direction: column;
+    gap: 0.25rem;
+    align-items: flex-start;
+  }
+
+  .letter-salutation {
+    font-size: 2rem;
+    margin-bottom: 0.95rem;
+  }
+
+  .letter-paragraph {
+    font-size: 1.05rem;
+    line-height: 1.72;
+  }
+
+  .letter-paragraph--highlight {
+    padding-left: 0.75rem;
+  }
+
+  .letter-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    text-align: center;
+  }
+
+  /* Scene 07 Birthday Cake */
+  .cake-stage-box {
+    height: 320px;
+    margin-bottom: 1.35rem;
+  }
+
+  .cake-candle-badge {
+    top: 0.65rem;
+    left: 0.65rem;
+    font-size: 0.62rem;
+    padding: 0.25rem 0.55rem;
+  }
+
+  .cake-orbit-hint {
+    bottom: 0.65rem;
+    right: 0.65rem;
+    font-size: 0.6rem;
+  }
+
+  .cake-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .cake-actions .btn-luxury {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  /* Scene 08 Finale */
+  .finale-heart-frame {
+    width: min(280px, 84vw);
+    margin-bottom: 1.65rem;
+  }
+
+  .finale-headline {
+    font-size: clamp(1.85rem, 7.2vw, 2.6rem);
+  }
+
+  .finale-support {
+    font-size: 1.08rem;
+    padding-inline: 0.5rem;
   }
 
   .lightbox-nav {
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
   }
-  .lightbox-nav--prev { left: 0.5rem; }
-  .lightbox-nav--next { right: 0.5rem; }
+  .lightbox-nav--prev { left: 0.4rem; }
+  .lightbox-nav--next { right: 0.4rem; }
 
-  .reasons-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .back-to-top {
+    right: 0.85rem;
+    bottom: 0.85rem;
+    width: 38px;
+    height: 38px;
   }
 }
 
-@media (max-width: 480px) {
-  .reasons-grid {
-    grid-template-columns: 1fr;
-  }
-
+@media (max-width: 420px) {
   .interactive-cards-grid,
   .video-memory-grid {
     grid-template-columns: 1fr;
@@ -2539,38 +2809,27 @@
 
   .polaroid-grid {
     grid-template-columns: 1fr;
-    max-width: 320px;
+    max-width: 260px;
     margin-inline: auto;
   }
 
-  .scrapbook-piece:nth-child(1),
-  .scrapbook-piece:nth-child(2),
-  .scrapbook-piece:nth-child(3),
-  .scrapbook-piece:nth-child(4) {
-    grid-column: 1 / 13;
-    transform: rotate(0deg);
-  }
-
-  .music-meta {
-    display: none;
-  }
-
   .btn-luxury {
-    width: 100%;
-    padding: 0.95rem 1.4rem;
+    padding: 0.88rem 1.25rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
   }
 
-  .letter-paper {
-    padding: 1.75rem 1.25rem;
+  .envelope-stage {
+    width: 290px;
   }
 
-  .letter-paper::before {
-    inset: 8px;
+  .wax-seal {
+    width: 52px;
+    height: 52px;
   }
 
-  .letter-controls {
-    flex-direction: column;
-    align-items: stretch;
-    text-align: center;
+  .wax-seal svg {
+    width: 20px;
+    height: 20px;
   }
 }

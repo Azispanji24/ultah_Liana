@@ -29,18 +29,18 @@ export function initScene06Letter() {
   function updateControls() {
     const shown = Math.max(0, currentParaIndex + 1);
     if (progressEl) {
-      progressEl.textContent = `Line ${shown} of ${paragraphs.length}`;
+      progressEl.textContent = `Bagian ${shown} dari ${paragraphs.length}`;
     }
     if (!continueBtn) return;
 
     if (currentParaIndex >= paragraphs.length - 1 && !isTyping) {
-      continueBtn.textContent = 'Continue to Your Birthday Cake ↓';
+      continueBtn.textContent = 'Lanjut ke Kue Ulang Tahun ↓';
       continueBtn.dataset.done = 'true';
     } else if (isTyping) {
-      continueBtn.textContent = 'Reveal Paragraph';
+      continueBtn.textContent = 'Tampilkan Paragraf';
       continueBtn.dataset.done = 'false';
     } else {
-      continueBtn.textContent = 'Continue Reading';
+      continueBtn.textContent = 'Lanjut Membaca';
       continueBtn.dataset.done = 'false';
     }
   }
@@ -166,9 +166,9 @@ export function initScene06Letter() {
       signatureBlock?.classList.remove('is-visible');
       if (sealedCover) sealedCover.style.display = 'block';
       if (readingArea) readingArea.style.display = 'none';
-      if (progressEl) progressEl.textContent = `Line 0 of ${paragraphs.length}`;
+      if (progressEl) progressEl.textContent = `Bagian 0 dari ${paragraphs.length}`;
       if (continueBtn) {
-        continueBtn.textContent = 'Continue Reading';
+        continueBtn.textContent = 'Lanjut Membaca';
         continueBtn.dataset.done = 'false';
       }
     },
