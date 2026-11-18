@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Letter to Liana | Chapter 21</title>
+  <meta name="description" content="A personal digital birthday love letter and interactive celebration crafted specially for Liana Nurfatimah's 21st Birthday — November 19." />
+  <meta name="theme-color" content="#261521" />
+
+  <!-- Open Graph / Social Preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="A Letter to Liana | Chapter 21" />
+  <meta property="og:description" content="Something special is waiting for you, Liana Nurfatimah. Open your 21st birthday letter." />
+  <meta property="og:image" content="./assets/photos/IMG_4813.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="A Letter to Liana | Chapter 21" />
+  <meta name="twitter:description" content="A digital love letter for Liana Nurfatimah's 21st Birthday." />
+
+  <!-- Custom Heart Wax-Seal Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23682D42' stroke='%23D6B77A' stroke-width='2.5'/%3E%3Cpath d='M32 46s-13-8.4-13-17.5C19 23.3 22.8 20 27 20c2.7 0 4.3 1.4 5 2.9.7-1.5 2.3-2.9 5-2.9 4.2 0 8 3.3 8 8.5C45 37.6 32 46 32 46z' fill='%23F3E6D0'/%3E%3C/svg%3E" />
+
+  <!-- Luxury Editorial Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="./src/styles/tokens.css" />
+  <link rel="stylesheet" href="./src/styles/main.css" />
+</head>
+<body class="is-locked">
+  <!-- Subtle Atmospheric Layers -->
+  <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+  <div class="film-grain" aria-hidden="true"></div>
+
+  <!-- Hidden Offscreen YouTube BGM Host ("Photograph — Ed Sheeran") -->
+  <div class="yt-audio-host" aria-hidden="true">
+    <div id="yt-bgm-player"></div>
+  </div>
+
+  <!-- Top Progress Line -->
+  <div id="progress-track" class="progress-track" aria-hidden="true">
+    <div id="progress-fill" class="progress-fill"></div>
+  </div>
+
+  <!-- Minimal Floating Navigation & Music Control -->
+  <header id="floating-topbar" class="floating-topbar" aria-label="Story navigation and audio controls">
+    <a href="#scene-countdown" class="brand-pill">
+      <span class="brand-dot" aria-hidden="true"></span>
+      <span>Liana</span>
+      <span style="opacity: 0.65; font-size: 0.8rem;">· Chapter 21</span>
+    </a>
+
+    <div class="controls-cluster">
+      <div id="music-widget" class="music-widget" role="region" aria-label="Background music player">
+        <button id="music-toggle-btn" class="music-toggle-btn" type="button" aria-label="Play background music">
+          <svg id="music-icon-play" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          <svg id="music-icon-pause" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="display:none;" aria-hidden="true">
+            <path d="M6 5h4v14H6zm8 0h4v14h-4z"/>
+          </svg>
+        </button>
+
+        <div class="music-bars" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+
+        <div class="music-meta">
+          <span class="music-title">Photograph</span>
+          <span class="music-artist">Ed Sheeran</span>
+        </div>
+
+        <button id="volume-toggle-btn" class="volume-btn" type="button" aria-label="Adjust music volume" aria-expanded="false" aria-controls="volume-popover">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          </svg>
+        </button>
+
+        <div id="volume-popover" class="volume-popover" role="dialog" aria-label="Volume control">
+          <input id="volume-slider" class="volume-slider" type="range" min="0" max="100" value="42" aria-label="Music volume" />
+          <button id="mute-btn" type="button" style="font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--soft-gold);">Mute</button>
+        </div>
+      </div>
+
+      <button id="fullscreen-btn" class="icon-pill-btn" type="button" aria-label="Toggle fullscreen">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <polyline points="9 21 3 21 3 15"></polyline>
+          <line x1="21" y1="3" x2="14" y2="10"></line>
+          <line x1="3" y1="21" x2="10" y2="14"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Right-side Minimal Chapter Progress Rail -->
+  <nav id="chapter-rail" class="chapter-rail" aria-label="Story chapters"></nav>
+
+  <!-- Back-to-top Control -->
+  <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <!-- ======================================================================
+       SCENE 01 — THE SECRET ENVELOPE
+       ====================================================================== -->
+  <section id="scene-envelope" class="scene-envelope" aria-label="The Secret Envelope">
+    <div class="envelope-ambient-glow" aria-hidden="true"></div>
+
+    <div class="envelope-content">
+      <p class="eyebrow" style="margin-bottom: 1.15rem;">Special Delivery · 19 November</p>
+      <p class="envelope-prelude">Something special is waiting for you...</p>
+      <h1 class="envelope-recipient">For <span>Liana Nurfatimah</span></h1>
+
+      <div id="envelope-stage" class="envelope-stage" role="button" tabindex="0" aria-label="Open your birthday letter envelope">
+        <div class="envelope-3d">
+          <div class="envelope-letter-peek">
+            <span class="peek-kicker">Chapter 21</span>
+            <span class="peek-title">Dearest Liana</span>
+            <span class="peek-sub">19 November · 00:00 WIB</span>
+          </div>
+
+          <div class="envelope-pocket" aria-hidden="true"></div>
+
+          <div class="envelope-flap" aria-hidden="true">
+            <div class="envelope-flap-inner"></div>
+          </div>
+
+          <div class="wax-seal" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <button id="open-letter-btn" class="btn-luxury" type="button">
+        OPEN YOUR LETTER
+      </button>
+
+      <p class="envelope-hint">Best experienced with sound on · ♪ Photograph — Ed Sheeran</p>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       MAIN STORY FLOW (SCENES 02 — 08)
+       ====================================================================== -->
+  <main id="story-main">
+    <!-- SCENE 02 — A LITTLE COUNTDOWN -->
+    <section id="scene-countdown" class="scene scene-countdown" aria-label="Birthday Countdown">
+      <canvas id="countdown-canvas" class="countdown-canvas" aria-hidden="true"></canvas>
+
+      <div class="container countdown-inner">
+        <span class="eyebrow" data-reveal>Chapter 02 · The Moment</span>
+        <p class="countdown-quote" data-reveal data-reveal-delay="120">
+          "Someone as special as you deserves a special day."
+        </p>
+
+        <div class="countdown-date-badge" data-reveal data-reveal-delay="200">
+          <span>✦</span>
+          <span>19 NOVEMBER</span>
+          <span>✦</span>
+        </div>
+
+        <!-- Live Countdown (shown prior to Nov 19, 00:00 WIB) -->
+        <div id="countdown-grid" class="countdown-grid" data-reveal data-reveal-delay="260" aria-live="polite">
+          <div class="countdown-unit">
+            <span id="cd-days" class="countdown-value">00</span>
+            <span class="countdown-label">Days</span>
+          </div>
+          <div class="countdown-unit">
+            <span id="cd-hours" class="countdown-value">00</span>
+            <span class="countdown-label">Hours</span>
+          </div>
+          <div class="countdown-unit">
+            <span id="cd-minutes" class="countdown-value">00</span>
+            <span class="countdown-label">Minutes</span>
+          </div>
+          <div class="countdown-unit">
+            <span id="cd-seconds" class="countdown-value">00</span>
+            <span class="countdown-label">Seconds</span>
+          </div>
+        </div>
+
+        <!-- Birthday Celebration State (shown at and after Nov 19, 00:00 WIB) -->
+        <div id="celebration-state" class="celebration-state" aria-live="polite">
+          <h2 class="celebration-headline">IT'S YOUR DAY, LIANA!</h2>
+          <p class="celebration-sub">Happy 21st Birthday!</p>
+          <p class="celebration-meta">November 19 · Chapter 21 Has Officially Arrived</p>
+        </div>
+
+        <p id="countdown-tz-note" class="countdown-tz-note">Asia/Jakarta · WIB</p>
+
+        <button id="countdown-continue-btn" class="scroll-cue" type="button" aria-label="Scroll to The First Reveal">
+          <span>Begin Chapter 21</span>
+          <span class="scroll-cue-line" aria-hidden="true"></span>
+        </button>
+      </div>
+    </section>
+
+    <!-- SCENE 03 — THE FIRST REVEAL -->
+    <section id="scene-reveal" class="scene scene-reveal" aria-label="The First Reveal">
+      <div class="container">
+        <div class="reveal-layout">
+          <div class="reveal-portrait-wrap" data-reveal="scale">
+            <div class="reveal-portrait-halo" aria-hidden="true"></div>
+            <div class="reveal-portrait-frame">
+              <div class="reveal-portrait-inner">
+                <img
+                  id="reveal-portrait-img"
+                  class="reveal-portrait-img"
+                  src="./assets/photos/IMG_4813.jpg"
+                  alt="Liana Nurfatimah"
+                  width="1200"
+                  height="1600"
+                />
+              </div>
+            </div>
+            <div class="reveal-chapter-seal" aria-hidden="true">
+              <strong>21</strong>
+              <span>Chapter</span>
+            </div>
+          </div>
+
+          <div class="reveal-copy">
+            <span class="eyebrow" data-reveal>Chapter 03 · The Star of Today</span>
+            <h2 class="reveal-line-primary" data-reveal data-reveal-delay="120">Today is all about you.</h2>
+            <p class="reveal-line-poetic" data-reveal data-reveal-delay="220">
+              "To the girl who makes ordinary moments feel extraordinary."
+            </p>
+            <div class="reveal-divider" data-reveal data-reveal-delay="300" aria-hidden="true"></div>
+            <p class="reveal-name" data-reveal data-reveal-delay="360">Liana Nurfatimah</p>
+            <p class="reveal-chapter-text" data-reveal data-reveal-delay="440">Chapter 21 begins.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCENE 04 — OUR LITTLE GALLERY -->
+    <section id="scene-gallery" class="scene scene-gallery" aria-label="Our Little Gallery">
+      <div class="container">
+        <div class="gallery-header">
+          <span class="eyebrow" data-reveal>Chapter 04 · Keepsakes</span>
+          <h2 class="gallery-title" data-reveal data-reveal-delay="100">Our Little Gallery</h2>
+          <p class="gallery-subtitle" data-reveal data-reveal-delay="180">
+            "We keep this love in a photograph — tap any frame to look a little closer."
+          </p>
+        </div>
+
+        <!-- 4.1 Cinematic Full-Width Frame -->
+        <div class="gallery-block" data-reveal>
+          <div class="gallery-block-label">
+            <h3>A Frame to Hold Onto</h3>
+            <span>01 · Centerpiece</span>
+          </div>
+          <div id="gallery-cinematic"></div>
+        </div>
+
+        <!-- 4.2 Polaroid Memories -->
+        <div class="gallery-block" data-reveal>
+          <div class="gallery-block-label">
+            <h3>Polaroid Keepsakes</h3>
+            <span>02 · Instant Memories</span>
+          </div>
+          <div id="gallery-polaroids" class="polaroid-grid"></div>
+        </div>
+
+        <!-- 4.3 Editorial Magazine Grid -->
+        <div class="gallery-block" data-reveal>
+          <div class="gallery-block-label">
+            <h3>Editorial Moments</h3>
+            <span>03 · Curated Frames</span>
+          </div>
+          <div id="gallery-editorial" class="editorial-grid"></div>
+        </div>
+
+        <!-- 4.4 Overlapping Scrapbook Composition -->
+        <div class="gallery-block" data-reveal>
+          <div class="gallery-block-label">
+            <h3>From the Scrapbook</h3>
+            <span>04 · Layered Memories</span>
+          </div>
+          <div id="gallery-scrapbook" class="scrapbook-stage"></div>
+        </div>
+
+        <!-- 4.5 Interactive Photo Cards -->
+        <div class="gallery-block" data-reveal>
+          <div class="gallery-block-label">
+            <h3>Little Portraits</h3>
+            <span>05 · Interactive Cards</span>
+          </div>
+          <div id="gallery-interactive-cards" class="interactive-cards-grid"></div>
+        </div>
+
+        <!-- 4.6 Horizontal Memory Filmstrip -->
+        <div class="gallery-block" data-reveal>
+          <div class="gallery-block-label">
+            <h3>The Memory Reel</h3>
+            <span>06 · Swipe or Scroll →</span>
+          </div>
+          <div class="filmstrip-wrapper">
+            <div class="filmstrip-controls">
+              <button id="filmstrip-prev" class="filmstrip-arrow" type="button" aria-label="Scroll gallery left">←</button>
+              <button id="filmstrip-next" class="filmstrip-arrow" type="button" aria-label="Scroll gallery right">→</button>
+            </div>
+            <div id="gallery-filmstrip" class="filmstrip-track" aria-label="Horizontal photograph gallery"></div>
+          </div>
+        </div>
+
+        <!-- 4.7 Moving Memories — ALL 8 Videos -->
+        <div class="gallery-block" data-reveal>
+          <div class="gallery-block-label">
+            <h3>Living Memories</h3>
+            <span>07 · 8 Video Keepsakes</span>
+          </div>
+          <div id="gallery-videos" class="video-memory-grid" aria-label="Video keepsakes gallery"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCENE 05 — 21 REASONS WHY YOU ARE SPECIAL -->
+    <section id="scene-reasons" class="scene scene-reasons" aria-label="21 Alasan Kenapa Kamu Istimewa">
+      <div class="container">
+        <div class="reasons-header">
+          <span class="eyebrow" data-reveal>Chapter 05 · Dua Puluh Satu</span>
+          <h2 class="reasons-title" data-reveal data-reveal-delay="100">21 Alasan Kenapa Kamu Istimewa</h2>
+          <p class="reasons-subtitle" data-reveal data-reveal-delay="180">
+            Satu catatan kecil untuk setiap tahun indah dalam hidupmu. Ketuk kartu mana saja untuk membukanya.
+          </p>
+        </div>
+
+        <div class="reasons-toolbar" data-reveal data-reveal-delay="220">
+          <div class="reasons-counter">
+            Terbuka: <strong id="reasons-discovered-count">0</strong> / 21
+          </div>
+          <button id="reasons-reveal-all" class="reasons-reveal-all" type="button">
+            Buka Semua 21
+          </button>
+        </div>
+
+        <div id="reasons-grid" class="reasons-grid" data-reveal data-reveal-delay="260"></div>
+      </div>
+    </section>
+
+    <!-- SCENE 06 — A SPECIAL LETTER -->
+    <section id="scene-letter" class="scene scene-letter" aria-label="A Special Letter">
+      <div class="container">
+        <div class="letter-header">
+          <span class="eyebrow" data-reveal>Chapter 06 · Written From the Heart</span>
+          <h2 class="letter-heading" data-reveal data-reveal-delay="100">A Letter Just For You</h2>
+        </div>
+
+        <div class="letter-paper-wrap" data-reveal="scale">
+          <article class="letter-paper">
+            <div class="letter-top-meta">
+              <span>To: Liana Nurfatimah</span>
+              <span>19 November · XXI</span>
+            </div>
+
+            <h3 class="letter-salutation">Dear Liana.....</h3>
+
+            <!-- Initial Sealed Sheet Prompt -->
+            <div id="letter-sealed-cover" class="letter-sealed-cover">
+              <p class="letter-sealed-text">
+                Tarik napas pelan — setiap kata di sini ditulis tulus dari hati, khusus untukmu.
+              </p>
+              <button id="letter-open-sheet-btn" class="btn-luxury btn-luxury--ivory" type="button">
+                BUKA SURATNYA
+              </button>
+            </div>
+
+            <!-- Progressive Reading Area -->
+            <div id="letter-reading-area" style="display: none;">
+              <div id="letter-body" class="letter-body" aria-live="polite"></div>
+
+              <div id="letter-signature-block" class="letter-signature-block">
+                <p class="letter-closing">With love,</p>
+                <p class="letter-signature">I love you, always. ❤️</p>
+              </div>
+
+              <div class="letter-controls">
+                <span id="letter-progress" class="letter-progress">Bagian 0 dari 11</span>
+                <button id="letter-continue-btn" class="btn-luxury btn-luxury--ivory" type="button">
+                  Lanjut Membaca
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCENE 07 — THE BIRTHDAY CAKE -->
+    <section id="scene-cake" class="scene scene-cake" aria-label="The Birthday Cake">
+      <canvas id="cake-particles-canvas" class="cake-particles-canvas" aria-hidden="true"></canvas>
+
+      <div class="container cake-inner">
+        <span class="eyebrow" data-reveal>Chapter 07 · Twenty-One Candles</span>
+        <h2 class="cake-headline" data-reveal data-reveal-delay="100">Make a Wish, Liana.</h2>
+        <p id="cake-instruction" class="cake-instruction" data-reveal data-reveal-delay="180">
+          Close your eyes and make a wish.
+        </p>
+
+        <div class="cake-stage-box" data-reveal="scale" data-reveal-delay="220">
+          <span id="cake-candle-badge" class="cake-candle-badge">21 Lit Candles</span>
+          <div id="cake-stage-box" style="width: 100%; height: 100%;"></div>
+          <span class="cake-orbit-hint">Drag to rotate</span>
+        </div>
+
+        <div class="cake-actions" data-reveal data-reveal-delay="260">
+          <button id="blow-candles-btn" class="btn-luxury btn-luxury--gold" type="button">
+            BLOW THE CANDLES
+          </button>
+          <button id="mic-blow-btn" class="btn-luxury btn-luxury--ghost" type="button">
+            USE MICROPHONE TO BLOW
+          </button>
+        </div>
+
+        <div id="mic-meter-wrap" class="mic-meter-wrap" aria-live="polite">
+          <div class="mic-meter-bar">
+            <div id="mic-meter-fill" class="mic-meter-fill"></div>
+          </div>
+          <p id="mic-status-text" class="mic-status-text"></p>
+        </div>
+
+        <div id="cake-wish-message" class="cake-wish-message" aria-live="polite">
+          <p class="cake-wish-quote">"May all your wishes find their way to you."</p>
+          <div class="cake-actions" style="margin-top: 1.25rem;">
+            <button id="cake-to-finale-btn" class="btn-luxury" type="button">
+              ENTER THE FINALE ↓
+            </button>
+            <button id="relight-candles-btn" class="btn-luxury btn-luxury--ghost" type="button">
+              RELIGHT CANDLES
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCENE 08 — THE GRAND FINALE -->
+    <section id="scene-finale" class="scene scene-finale" aria-label="The Grand Finale">
+      <canvas id="finale-canvas" class="finale-canvas" aria-hidden="true"></canvas>
+
+      <div class="container finale-inner">
+        <div class="finale-heart-frame" data-reveal="scale" aria-label="Heart portrait of Liana Nurfatimah">
+          <svg class="finale-heart-svg" viewBox="0 0 320 300" role="img" aria-label="Liana Nurfatimah glowing at 21">
+            <defs>
+              <clipPath id="finale-heart-clip">
+                <path d="M160 278 C154 273 24 190 24 102 C24 54 61 20 105 20 C131 20 150 34 160 51 C170 34 189 20 215 20 C259 20 296 54 296 102 C296 190 166 273 160 278 Z" />
+              </clipPath>
+              <linearGradient id="finale-heart-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFF9F2" />
+                <stop offset="45%" stop-color="#D6B77A" />
+                <stop offset="100%" stop-color="#F2C9D2" />
+              </linearGradient>
+            </defs>
+            <!-- Soft Outer Halo Heart -->
+            <path
+              class="finale-heart-halo-path"
+              d="M160 284 C153 279 18 193 18 102 C18 50 58 14 105 14 C132 14 151 28 160 44 C169 28 188 14 215 14 C262 14 302 50 302 102 C302 193 167 279 160 284 Z"
+              fill="rgba(104, 45, 66, 0.42)"
+              stroke="url(#finale-heart-gold)"
+              stroke-width="1.5"
+              stroke-opacity="0.55"
+            />
+            <!-- Portrait Clipped Inside Heart (face & smile centered cleanly) -->
+            <image
+              id="finale-portrait-img"
+              href="./assets/photos/A9BAFB91-4678-42BF-8837-E8B49C26039F.jpg"
+              x="12"
+              y="-148"
+              width="296"
+              height="526"
+              preserveAspectRatio="xMidYMid slice"
+              clip-path="url(#finale-heart-clip)"
+            />
+            <!-- Crisp Golden Heart Rim -->
+            <path
+              d="M160 278 C154 273 24 190 24 102 C24 54 61 20 105 20 C131 20 150 34 160 51 C170 34 189 20 215 20 C259 20 296 54 296 102 C296 190 166 273 160 278 Z"
+              fill="none"
+              stroke="url(#finale-heart-gold)"
+              stroke-width="3.2"
+            />
+          </svg>
+        </div>
+
+        <span class="eyebrow" data-reveal>Chapter 21 · Forever Cherished</span>
+
+        <h2 class="finale-headline" data-reveal data-reveal-delay="100">
+          HAPPY 21ST BIRTHDAY, LIANA!
+        </h2>
+
+        <p class="finale-support" data-reveal data-reveal-delay="200">
+          Here's to 21 years of being wonderfully you, and to all the beautiful chapters still waiting to unfold.
+        </p>
+
+        <p class="finale-closing" data-reveal data-reveal-delay="300">
+          Your story is beautiful. And this is only the beginning.
+        </p>
+
+        <button id="replay-story-btn" class="btn-luxury btn-luxury--gold" type="button" data-reveal data-reveal-delay="360">
+          REPLAY OUR LITTLE STORY
+        </button>
+
+        <p class="finale-footer-credit">A Letter to Liana — Chapter 21 · 19 November</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Fullscreen Photo & Video Lightbox -->
+  <div id="photo-lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Expanded media view">
+    <button id="lightbox-close" class="lightbox-close" type="button" aria-label="Close media viewer">×</button>
+    <button id="lightbox-prev" class="lightbox-nav lightbox-nav--prev" type="button" aria-label="Previous item">←</button>
+
+    <div id="lightbox-stage" class="lightbox-stage"></div>
+
+    <button id="lightbox-next" class="lightbox-nav lightbox-nav--next" type="button" aria-label="Next item">→</button>
+
+    <div class="lightbox-footer">
+      <p id="lightbox-caption" class="lightbox-caption"></p>
+      <p id="lightbox-counter" class="lightbox-counter">FOTO · 01 / 35</p>
+    </div>
+  </div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
